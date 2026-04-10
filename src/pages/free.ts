@@ -1,146 +1,254 @@
 import { layout } from './layout'
-import weeklyData from '../data/weekly'
+import w from '../data/weekly'
 
 export function freePage(): string {
-  const { week, title, subtitle, deadline, highlight, qrImage, ctaText, question } = weeklyData
 
-  const choicesHtml = question.choices
-    .map(c => `<div class="q-choice"><span class="q-choice-num">${c.num}</span> ${c.text}</div>`)
-    .join('\n')
+  const stickyBar = /* html */`
+  <div class="sticky-bar show" id="stickyBar">
+    <p class="scarcity-line">🔥 잔여석 ${w.stats.remaining}자리 — 지금 마감 직전입니다</p>
+    <div class="sticky-bar-inner">
+      <a href="/apply" class="btn btn-danger btn-full pulse">${w.ctaFree}</a>
+    </div>
+  </div>`
 
-  return layout('무료 문제', /* html */`
+  const choicesHtml = w.question.choices.map((c, i) => {
+    const nums = ['①','②','③','④']
+    return `<button class="choice" data-id="${c.id}" onclick="freePick(this)">
+      <span class="choice-num">${nums[i]}</span>${c.text}
+    </button>`
+  }).join('\n')
+
+  return layout('무료 문제풀기', /* html */`
 
   <!-- NAV -->
-  <div class="nav-wrap">
-    <div class="nav-inner">
-      <a class="nav-brand" href="/">
-        <img src="/images/logo.png" alt="금쪽간호" onerror="this.onerror=null;this.src='https://mskim.online/images/logo.png'" />
+  <div class="nav-outer">
+    <div class="nav">
+      <div class="nav-brand">
+        <img src="/images/logo.png" alt="금쪽간호"
+          onerror="this.onerror=null;this.src='https://mskim.online/images/logo.png'" />
         금쪽간호
-      </a>
-      <a class="nav-back" href="/">← 홈</a>
+      </div>
+      <a class="nav-back" href="/question">← 홈</a>
     </div>
   </div>
 
-  <div class="page">
+  <div class="page-wrap" style="padding-top:24px;">
 
-    <!-- 배지 -->
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-      <span class="badge badge-dark">${week}</span>
-      <span class="badge badge-red">🔥 ${deadline}</span>
+    <!-- ① 배지 + 타이틀 -->
+    <div class="flex flex-wrap gap8 items-center">
+      <span class="badge badge-danger">⏰ ${w.deadline}</span>
+      <span class="badge badge-muted">${w.week}</span>
     </div>
 
-    <!-- 타이틀 -->
-    <h1 class="h2">${title}</h1>
-    <p class="lead" style="margin-top:10px;">${subtitle}</p>
+    <h1 class="h2 mt12">${w.title}</h1>
+    <p class="lead mt8">${w.subtitle} — 당신은?</p>
 
-    <!-- 진행 바 (긴박감) -->
+    <!-- ② COUNTDOWN — Scarcity -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">⏰ 마감까지</div>
+      <div class="countdown-timer" id="timer">--:--:--</div>
+    </div>
+
+    <!-- ③ PROGRESS — Social Proof + Scarcity -->
     <div class="progress-wrap">
-      <div class="progress-label">
-        <span>🔥 참여 현황</span>
-        <span id="prog-pct">76%</span>
+      <div class="progress-head">
+        <span>🔥 이번 주 참여 현황</span>
+        <span id="progPct" style="color:var(--danger);">잔여 ${w.stats.remaining}석</span>
       </div>
       <div class="progress-bg">
-        <div class="progress-fill" id="prog-fill"></div>
+        <div class="progress-fill" id="progFill"></div>
       </div>
-      <p class="muted" style="margin-top:6px;">이미 많은 분들이 참여했습니다</p>
+      <p class="muted mt4" style="font-size:11px;">정원 ${w.stats.capacity} 중 ${w.stats.remaining}자리만 남았습니다</p>
     </div>
 
-    <!-- 문제 카드 -->
-    <div class="q-card">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <span class="badge badge-red">이번 주 문제</span>
+    <!-- ④ 문제 카드 — 도전 유도 -->
+    <div class="card" id="qCard">
+      <div class="flex flex-wrap gap8 items-center" style="margin-bottom:14px;">
+        <span class="badge badge-danger">문제 풀기</span>
+        <span class="muted" style="font-size:12px;">${w.subject}</span>
       </div>
-      <div class="q-scenario">${question.scenario}</div>
-      <div class="q-ask">${question.ask}</div>
-      <div class="q-choices">
+      <p style="font-size:16px;font-weight:700;color:var(--text);line-height:1.55;margin-bottom:6px;">
+        ${w.question.scenario}
+      </p>
+      <p style="font-size:14px;color:#AAA;margin-bottom:4px;">${w.question.ask}</p>
+      <p class="muted" style="font-size:12px;margin-bottom:0;">✱ 정답은 라이브에서만 공개됩니다</p>
+
+      <div class="choices" id="freeChoices">
         ${choicesHtml}
       </div>
+
+      <!-- 반응 박스 (선택 후) -->
+      <div class="reaction-box reaction-wrong" id="reactWrong">
+        😶 ${w.question.wrongReaction}
+      </div>
+      <div class="reaction-box reaction-right" id="reactRight">
+        ✅ ${w.question.rightReaction}
+      </div>
     </div>
 
-    <!-- 하이라이트 메시지 -->
-    <div style="margin-top:20px;padding:16px 20px;background:#FFF5F5;border:1px solid #FEB2B2;border-radius:12px;display:flex;align-items:flex-start;gap:10px;">
-      <span style="font-size:20px;">⚠️</span>
-      <div>
-        <p style="font-size:14px;font-weight:700;color:#C53030;margin-bottom:4px;">${highlight}</p>
-        <p style="font-size:13px;color:#9A9A9A;line-height:1.6;">정답을 아는 것과 설명할 수 있는 것은 다릅니다</p>
+    <!-- ⑤ 미니 힌트 — 결핍 자극 (선택 후 표시) -->
+    <div class="hint-box" id="hintBox">
+      <div class="hint-label">💡 미니 힌트 (완전 해설은 라이브에서)</div>
+      <p>${w.question.miniHint}</p>
+      <p style="margin-top:10px;color:var(--muted);font-size:13px;">
+        ↳ 이 판단을 실습에서 적용하는 방법은 해설 클래스에서 공개됩니다.
+      </p>
+    </div>
+
+    <!-- ⑥ 결핍 문구 — 선택 후 노출 -->
+    <div id="deficitBlock" style="display:none;margin-top:16px;">
+      <div class="card-danger" style="text-align:center;">
+        <p style="font-size:22px;margin-bottom:8px;">🚫</p>
+        <p style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;">
+          정답을 알아도 설명 못하면<br />실습·국시에서 또 막힙니다
+        </p>
+        <p style="font-size:13px;color:#AAA;line-height:1.7;">
+          ${w.stats.wrongRate}의 학생이 같은 이유로 틀립니다.<br />
+          <strong>왜 그런 판단을 해야 하는지</strong> — 라이브에서 처음으로 이해됩니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- ⑦ CTA (선택 전) -->
+    <div id="ctaBefore2">
+      <hr class="divider" />
+      <!-- QR 섹션 -->
+      <p style="font-size:13px;font-weight:700;color:var(--text);text-align:center;margin-bottom:4px;">
+        ${w.qrLabel}
+      </p>
+      <p class="muted mt4" style="text-align:center;font-size:12px;">${w.qrSubLabel}</p>
+      <div class="qr-section mt16">
+        <img class="qr-img" src="${w.qrImage}" alt="소크라티브 QR"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="qr-placeholder" style="display:none;">
+          <span style="font-size:40px;">📲</span>
+          <span>QR 이미지를<br />/public/images/qr.png에<br />업로드하세요</span>
+        </div>
+        <p class="muted mt12" style="font-size:12px;">소크라티브에서 전체 문제 참여 후<br />해설 라이브에서 완전 정복</p>
+      </div>
+      <a href="/apply" class="btn btn-danger btn-full mt20 pulse">
+        ${w.ctaFree}
+      </a>
+      <a href="https://pf.kakao.com/_mqkuX" target="_blank" rel="noopener"
+        class="btn btn-ghost btn-full mt8">
+        💬 카카오로 먼저 문의하기
+      </a>
+    </div>
+
+    <!-- ⑦ CTA (선택 후 교체) -->
+    <div id="ctaAfter2" style="display:none;">
+      <a href="/apply" class="btn btn-danger btn-full pulse mt20">
+        ${w.ctaFree}
+      </a>
+      <a href="/question" class="btn btn-ghost btn-full mt8">
+        ← 다시 풀기
+      </a>
+
+      <hr class="divider" />
+
+      <!-- QR (선택 후에도 표시) -->
+      <p style="font-size:13px;font-weight:700;color:var(--text);text-align:center;margin-bottom:4px;">
+        ${w.qrLabel}
+      </p>
+      <div class="qr-section mt16">
+        <img class="qr-img" src="${w.qrImage}" alt="소크라티브 QR"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <div class="qr-placeholder" style="display:none;">
+          <span style="font-size:40px;">📲</span>
+          <span>QR 이미지를<br />/public/images/qr.png에<br />업로드하세요</span>
+        </div>
       </div>
     </div>
 
     <hr class="divider" />
 
-    <!-- QR 코드 섹션 -->
-    <div style="text-align:center;">
-      <p style="font-size:14px;font-weight:700;color:#1A1A1A;margin-bottom:4px;">해설 라이브 참여 QR</p>
-      <p class="muted" style="margin-bottom:16px;">스캔하거나 아래 버튼으로 바로 이동</p>
-
-      <div class="qr-wrap">
-        <img
-          src="${qrImage}"
-          alt="해설 참여 QR코드"
-          class="qr-img"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        />
-        <div class="qr-placeholder" style="display:none;">
-          <span class="qr-icon">📲</span>
-          <span>QR 이미지를<br/>/public/images/qr.png에<br/>업로드하세요</span>
-        </div>
+    <!-- ⑧ AUTHORITY + SOCIAL PROOF -->
+    <div class="instructor-row">
+      <img class="instructor-img" src="${w.instructor.img}" alt="${w.instructor.name}"
+        onerror="this.onerror=null;this.src='${w.instructor.imgFallback}'" />
+      <div>
+        <div class="instructor-name">${w.instructor.name} 선생님</div>
+        <div class="instructor-title">${w.instructor.title}<br />${w.instructor.sub}</div>
       </div>
     </div>
 
-    <!-- 설득 문구 -->
-    <div class="card" style="margin-top:8px;text-align:center;">
-      <p style="font-size:15px;color:#5A5A5A;line-height:1.9;">
-        정답 맞추는 건 쉽습니다<br />
-        하지만 <strong style="color:#1A1A1A;">왜 틀렸는지 설명 못하면</strong><br />
-        다음에도 틀립니다
-      </p>
-    </div>
+    ${w.reviews.map(r => `
+    <div class="review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"${r.text}"</p>
+      <div class="review-meta">${r.name} <span class="review-tag">${r.tag}</span></div>
+    </div>`).join('')}
 
-    <!-- CTA 버튼 -->
-    <a href="/apply" class="btn btn-red btn-full" style="margin-top:24px;">
-      ${ctaText} →
+    <a href="/apply" class="btn btn-danger btn-full mt20">
+      ${w.ctaFree}
     </a>
-
-    <a href="https://pf.kakao.com/_mqkuX" target="_blank" rel="noopener"
-      class="btn btn-full" style="margin-top:10px;background:#F9F9F9;color:#1A1A1A;border:1.5px solid #E8E8E4;font-size:14px;">
-      💬 카카오 채널로 문의하기
-    </a>
+    <p class="muted mt8" style="text-align:center;font-size:12px;">
+      잔여 ${w.stats.remaining}자리 · ${w.stats.capacity} 소수 정예 운영
+    </p>
 
   </div>
 
   <script>
-    // 진행 바 애니메이션
+    const ANSWER = "${w.question.answerId}";
+    const DEADLINE = new Date("${w.countdownEnd}").getTime();
+    let picked = false;
+
+    // ── 카운트다운 ──────────────────────────────
+    function updateTimer() {
+      const now = Date.now();
+      const diff = DEADLINE - now;
+      if (diff <= 0) {
+        document.getElementById('timer').textContent = '마감됨';
+        return;
+      }
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('timer').textContent =
+        String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // ── 진행 바 ────────────────────────────────
     window.addEventListener('load', () => {
       setTimeout(() => {
-        const fill = document.getElementById('prog-fill');
-        if (fill) fill.style.width = '76%';
-      }, 400);
+        const fill = document.getElementById('progFill');
+        if (fill) fill.style.width = '82%';
+      }, 500);
     });
 
-    // 선택지 클릭 → 신청 유도
-    document.querySelectorAll('.q-choice').forEach(el => {
-      el.addEventListener('click', () => {
-        document.querySelectorAll('.q-choice').forEach(c => {
-          c.style.borderColor = '#E8E8E4';
-          c.style.background = '#F9F9F9';
-        });
-        el.style.borderColor = '#C53030';
-        el.style.background = '#FFF5F5';
+    // ── 선택지 클릭 ────────────────────────────
+    function freePick(btn) {
+      if (picked) return;
+      picked = true;
 
-        // 잠깐 후 신청 버튼 강조
-        setTimeout(() => {
-          const cta = document.querySelector('.btn-red.btn-full');
-          if (cta) {
-            cta.style.transform = 'scale(1.02)';
-            cta.style.boxShadow = '0 8px 24px rgba(197,48,48,0.35)';
-            setTimeout(() => {
-              cta.style.transform = '';
-              cta.style.boxShadow = '';
-            }, 800);
-          }
-        }, 200);
+      document.querySelectorAll('#freeChoices .choice').forEach(c => {
+        c.classList.remove('selected-wrong','selected-right');
+        c.style.opacity = '0.5';
+        c.style.pointerEvents = 'none';
       });
-    });
+      btn.style.opacity = '1';
+
+      const isRight = btn.dataset.id === ANSWER;
+      btn.classList.add(isRight ? 'selected-right' : 'selected-wrong');
+
+      document.getElementById('reactWrong').classList.toggle('show', !isRight);
+      document.getElementById('reactRight').classList.toggle('show', isRight);
+
+      // 미니 힌트 + 결핍 블록 노출
+      setTimeout(() => {
+        document.getElementById('hintBox').classList.add('show');
+        document.getElementById('deficitBlock').style.display = 'block';
+        document.getElementById('ctaBefore2').style.display = 'none';
+        document.getElementById('ctaAfter2').style.display = 'block';
+      }, 500);
+
+      // 스크롤
+      setTimeout(() => {
+        document.getElementById('hintBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 700);
+    }
   </script>
-`)
+  `, { stickyBar })
 }
