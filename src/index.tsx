@@ -1,5 +1,8 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
+import { indexPage } from './pages/index'
+import { freePage } from './pages/free'
+import { applyPage } from './pages/apply'
 
 const app = new Hono()
 
@@ -8,6 +11,13 @@ const app = new Hono()
 // ===========================
 app.use('/static/*', serveStatic({ root: './' }))
 app.use('/images/*', serveStatic({ root: './' }))
+
+// ===========================
+// Weekly Pages
+// ===========================
+app.get('/question', (c) => c.html(indexPage()))
+app.get('/free', (c) => c.html(freePage()))
+app.get('/apply', (c) => c.html(applyPage()))
 
 // ===========================
 // Main landing page
