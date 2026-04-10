@@ -75,10 +75,15 @@ app.get('/', (c) => {
           <em>느려도 괜찮아요.</em><br />
           방향만 맞으면 됩니다
         </h1>
-        <div style="margin-top: 28px;">
+        <div style="margin-top: 28px; display:flex; flex-direction:column; gap:12px; max-width:340px;">
+          <a href="/question"
+            class="hero-socrative-btn">
+            <span class="hero-btn-badge">이번 주</span>
+            🩺 문제 풀어보기 →
+          </a>
           <a href="https://live-nursing.liveklass.com/cu/byPGxrFP" target="_blank" rel="noopener"
-            class="btn btn-primary" style="font-size:15px; padding:14px 28px;">
-            📄 템플릿 다운받기
+            class="btn btn-outline" style="font-size:14px; padding:13px 24px;">
+            📄 무료 템플릿 다운받기
           </a>
         </div>
       </div>

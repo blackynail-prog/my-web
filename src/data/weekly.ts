@@ -43,6 +43,7 @@ const weeklyData = {
   qrFallback: "https://mskim.online/images/qr.png",
   qrLabel: "소크라티브 참여 QR",
   qrSubLabel: "스캔하면 전체 문제 풀이 가능",
+  socrativeUrl: "https://b.socrative.com/login/student/",  // 매주 소크라티브 방 링크로 교체
 
   // ── CTA 텍스트 ─────────────────────────────────────────────
   ctaFree: "해설 라이브 신청하기 →",

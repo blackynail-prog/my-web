@@ -115,6 +115,44 @@ ul { list-style: none; }
 }
 .btn-warm:hover { background: #975a16; transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
+/* ── Hero 소크라티브 문제풀기 버튼 ── */
+.hero-socrative-btn {
+  background: #FACC15;
+  color: #0A0A0A;
+  font-size: 15px;
+  font-weight: 800;
+  padding: 15px 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(250,204,21,0.35);
+  position: relative;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-socrative-btn:hover {
+  background: #FDE047;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(250,204,21,0.5);
+}
+.hero-btn-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  background: #FF4444;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  margin-right: 2px;
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
 .section-label {
   font-size: 12px;
   font-weight: 700;
