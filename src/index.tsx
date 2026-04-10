@@ -3,6 +3,7 @@ import { serveStatic } from 'hono/cloudflare-workers'
 import { indexPage } from './pages/index'
 import { freePage } from './pages/free'
 import { applyPage } from './pages/apply'
+import w from './data/weekly'
 
 const app = new Hono()
 
@@ -76,10 +77,10 @@ app.get('/', (c) => {
           방향만 맞으면 됩니다
         </h1>
         <div style="margin-top: 28px; display:flex; flex-direction:column; gap:12px; max-width:340px;">
-          <a href="/question"
+          <a href="${w.socrativeUrl}" target="_blank" rel="noopener"
             class="hero-socrative-btn">
             <span class="hero-btn-badge">이번 주</span>
-            🩺 문제 풀어보기 →
+            🩺 퀴즈 풀러가기 →
           </a>
           <a href="https://live-nursing.liveklass.com/cu/byPGxrFP" target="_blank" rel="noopener"
             class="btn btn-outline" style="font-size:14px; padding:13px 24px;">
