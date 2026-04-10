@@ -37,7 +37,7 @@ app.get('/', (c) => {
     <div class="nav-inner">
       <a class="nav-brand" href="#">
         <div class="nav-logo">
-          <img src="/images/logo.png" alt="금쪽간호 로고" onerror="this.style.display='none';this.parentElement.textContent='💛'" />
+          <img src="/images/logo.png" alt="금쪽간호 로고" onerror="this.onerror=null;this.src='https://mskim.online/images/logo.png'" />
         </div>
         <span class="nav-name">금쪽간호</span>
       </a>
@@ -80,7 +80,7 @@ app.get('/', (c) => {
             src="/images/profile2.jpg"
             alt="김민수 선생님"
             style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            onerror="this.onerror=null;this.src='https://mskim.online/images/profile2.jpg'"
           />
           <div class="hero-profile-placeholder" style="display:none;">
             <span class="emoji">👩‍⚕️</span>
@@ -196,7 +196,7 @@ app.get('/', (c) => {
             src="/images/profile.png"
             alt="김민수 선생님"
             style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;"
-            onerror="this.src='/images/profile2.jpg'"
+            onerror="this.onerror=null;this.src='https://mskim.online/images/profile.png'"
           />
         </div>
       </div>
@@ -244,7 +244,7 @@ app.get('/', (c) => {
               src="/images/books.jpg"
               alt="저서 3권 - 핵심기본술기 가이드북, 성인간호학, 비판적 사고와 간호과정"
               style="width:100%;border-radius:8px;border:1px solid var(--border);"
-              onerror="this.style.display='none'"
+              onerror="this.onerror=null;this.src='https://mskim.online/images/books.jpg'"
             />
           </div>
           <div class="npp-row">
@@ -694,7 +694,7 @@ app.get('/', (c) => {
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
-          <img src="/images/logo.png" alt="금쪽간호 로고" style="width:28px;height:28px;border-radius:6px;object-fit:cover;" onerror="this.style.display='none'" />
+          <img src="/images/logo.png" alt="금쪽간호 로고" style="width:28px;height:28px;border-radius:6px;object-fit:cover;" onerror="this.onerror=null;this.src='https://mskim.online/images/logo.png'" />
           금쪽간호
         </div>
         <p class="footer-desc">간호대학생의 실습 경험을 배움으로 연결하는 교육 플랫폼</p>
