@@ -476,6 +476,121 @@ ul { list-style: none; }
 .review-more-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
 /* ===========================
+   MIDREVIEW (중간 후기 섹션)
+=========================== */
+/* 변화 지표 바 */
+.midreview-stats {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin: 28px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.midreview-stat-item { display: flex; flex-direction: column; gap: 6px; }
+.midreview-stat-label { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.midreview-bar-wrap {
+  background: var(--surface-2);
+  border-radius: 99px; height: 10px; overflow: hidden;
+}
+.midreview-bar {
+  height: 100%; width: 0;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 1.6s cubic-bezier(.4,0,.2,1);
+}
+.midreview-bar-gold { background: #F6A623; }
+.midreview-bar.animated { width: var(--pct); }
+.midreview-stat-num { font-size: 12px; font-weight: 700; color: var(--text-muted); text-align: right; }
+
+/* Q&A 2열 그리드 */
+.midreview-qna-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+@media (max-width: 640px) { .midreview-qna-grid { grid-template-columns: 1fr; } }
+.midreview-qna-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.midreview-qna-card-gold {
+  border-color: rgba(246,166,35,0.4);
+  background: rgba(246,166,35,0.05);
+}
+.midreview-q {
+  font-size: 13px; font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.midreview-answers {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 9px;
+}
+.midreview-answers li {
+  font-size: 13px; color: var(--text-secondary);
+  line-height: 1.65; padding-left: 14px; position: relative;
+}
+.midreview-answers li::before {
+  content: "—";
+  position: absolute; left: 0;
+  color: var(--text-muted); font-size: 11px;
+}
+.midreview-answers li strong { color: var(--text-primary); }
+
+/* 추천 대상 칩 */
+.midreview-recommend {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin: 20px 0;
+}
+.midreview-recommend-title {
+  font-size: 13px; font-weight: 800; color: var(--text-primary);
+  margin-bottom: 14px;
+}
+.midreview-recommend-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.midreview-recommend-chip {
+  font-size: 13px; font-weight: 600;
+  background: var(--surface-2);
+  border: 1px solid var(--border-dark);
+  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: 99px;
+}
+
+/* 생생 한 마디 */
+.midreview-voices {
+  background: var(--text-primary);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin: 20px 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.midreview-voices-title {
+  font-size: 13px; font-weight: 800;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+.midreview-voice {
+  font-size: 14px; color: #fff;
+  line-height: 1.75;
+  padding-left: 16px;
+  border-left: 3px solid #F6A623;
+}
+
+/* ===========================
    PROOF STRIP
 =========================== */
 .proof-strip {

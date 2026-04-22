@@ -91,3 +91,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
+
+// ===========================
+// Midreview: 지표 바 애니메이션 (스크롤 진입 시)
+// ===========================
+const midBars = document.querySelectorAll('.midreview-bar');
+if (midBars.length) {
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('animated');
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  midBars.forEach(bar => barObs.observe(bar));
+}

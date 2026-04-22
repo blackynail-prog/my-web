@@ -629,10 +629,51 @@ app.get('/', (c) => {
   <section class="reviews" id="reviews">
     <div class="container">
       <p class="section-label fade-up">수강생 후기</p>
-      <h2 class="section-title fade-up">금쪽간호 1기 후기</h2>
-      <p class="section-subtitle fade-up">파일럿 1기 수강생들의 실제 후기입니다.</p>
+      <h2 class="section-title fade-up">금쪽간호 1기 중간 후기</h2>
+      <p class="section-subtitle fade-up">수강생 4명 전원이 참여한 설문 결과입니다. (무편집 원문)</p>
 
-      <div class="reviews-grid">
+      <!-- ── 변화 지표 바 ── -->
+      <div class="midreview-stats fade-up">
+        <div class="midreview-stat-item">
+          <div class="midreview-stat-label">꾸준히 공부하게 됐다</div>
+          <div class="midreview-bar-wrap">
+            <div class="midreview-bar" style="--pct:100%"></div>
+          </div>
+          <div class="midreview-stat-num">4명 / 4명</div>
+        </div>
+        <div class="midreview-stat-item">
+          <div class="midreview-stat-label">훨씬 더 꾸준해졌다</div>
+          <div class="midreview-bar-wrap">
+            <div class="midreview-bar midreview-bar-gold" style="--pct:75%"></div>
+          </div>
+          <div class="midreview-stat-num">3명 (75%)</div>
+        </div>
+      </div>
+
+      <!-- ── Q1 / Q2 카드 ── -->
+      <div class="midreview-qna-grid fade-up" style="transition-delay:0.05s">
+        <div class="midreview-qna-card">
+          <div class="midreview-q">😓 참여 전 가장 힘들었던 점</div>
+          <ul class="midreview-answers">
+            <li>공부방법과 습관</li>
+            <li>공부 효율이 너무 안 좋았던 것</li>
+            <li>내가 할 수 있을까 라는 <strong>불확실성</strong></li>
+            <li>시간을 효율적으로 쓰는 방법 / 세분화해서 목표 설정하는 것</li>
+          </ul>
+        </div>
+        <div class="midreview-qna-card midreview-qna-card-gold">
+          <div class="midreview-q">✨ 참여 후 가장 달라진 점</div>
+          <ul class="midreview-answers">
+            <li><strong>공부방법을 찾게 되었고</strong> 효율적으로 공부하게 됨</li>
+            <li>완벽하게 해야한다는 <strong>부담감이 줄었다</strong></li>
+            <li>3학년까지 간호학이 재밌다는 생각이 없었는데 — <strong>성인을 집중하면서 재밌다는 생각이 들었습니다</strong></li>
+            <li>시간을 아끼면서 살게 되었고, <strong>공부의 우선순위가 잡혔다</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── 수강생 직접 후기 카드 ── -->
+      <div class="reviews-grid" style="margin-top:20px;">
         <div class="review-card fade-up">
           <div class="review-header">
             <div class="review-stars">★★★★★</div>
@@ -651,7 +692,7 @@ app.get('/', (c) => {
           </div>
         </div>
 
-        <div class="review-card fade-up" style="transition-delay:0.1s">
+        <div class="review-card fade-up" style="transition-delay:0.08s">
           <div class="review-header">
             <div class="review-stars">★★★★★</div>
             <span class="review-cohort">금쪽간호 1기</span>
@@ -669,16 +710,49 @@ app.get('/', (c) => {
             <span class="tag tag-green">부담 감소</span>
           </div>
         </div>
+      </div>
 
-        <div class="review-more-card fade-up" style="transition-delay:0.2s">
-          <div class="ri">📸</div>
-          <p><strong>2기 수강생 후기</strong>가 업데이트될 예정입니다.<br />
-          지금 2기에 참여하면 <strong>최초 합류 특별 혜택</strong>을 받으실 수 있어요.</p>
-          <a class="btn btn-outline" style="margin-top:8px;" href="https://www.instagram.com/sop.mskim" target="_blank" rel="noopener">
-            인스타에서 후기 더 보기 →
-          </a>
+      <!-- ── 관리받는 느낌 + 새학기 도움 ── -->
+      <div class="midreview-qna-grid fade-up" style="transition-delay:0.1s;margin-top:16px;">
+        <div class="midreview-qna-card">
+          <div class="midreview-q">🙌 관리받는 느낌이 들었던 부분</div>
+          <ul class="midreview-answers">
+            <li>매주 1회 <strong>공부점검 및 피드백</strong> + 줌스터디</li>
+            <li>공부 방향성을 잡아주시고, 자기주도학습 시간 확보, <strong>멘탈적인 부분도 많은 도움</strong></li>
+            <li>월·수·금 공부 스터디를 통해 함께할 수 있던 점</li>
+            <li>시간 관리</li>
+          </ul>
+        </div>
+        <div class="midreview-qna-card">
+          <div class="midreview-q">🌱 새학기에 가장 도움된 요소</div>
+          <ul class="midreview-answers">
+            <li>줌스터디</li>
+            <li>문제를 풀 수 있게 만들어주신 것</li>
+            <li>미리 지침서 채우기, 예습하기</li>
+            <li>케이스스터디가 걱정되었는데 — <strong>어떻게 하는지 제대로 알게 된 것 같습니다</strong></li>
+          </ul>
         </div>
       </div>
+
+      <!-- ── 추천 대상 ── -->
+      <div class="midreview-recommend fade-up" style="transition-delay:0.12s">
+        <div class="midreview-recommend-title">💬 수강생이 직접 말하는 추천 대상</div>
+        <div class="midreview-recommend-grid">
+          <div class="midreview-recommend-chip">나만의 공부방법 못 찾은 사람</div>
+          <div class="midreview-recommend-chip">열심히 해도 성적이 그대로인 사람</div>
+          <div class="midreview-recommend-chip">스스로 공부가 안 되는 학생</div>
+          <div class="midreview-recommend-chip">시간 관리가 어려운 학생</div>
+        </div>
+      </div>
+
+      <!-- ── 생생한 한 마디 (원문) ── -->
+      <div class="midreview-voices fade-up" style="transition-delay:0.15s">
+        <div class="midreview-voices-title">📣 수강생 생생 한 마디 (원문)</div>
+        <div class="midreview-voice">"너무 완벽해서.. 여기에 무언가 더 바랄 수가 없어요!! ㅠㅠㅠ 학생들에게 200%, 300% 쏟아주시는 것 같아서 늘 감사한 마음 뿐입니다.."</div>
+        <div class="midreview-voice">"교수님 사랑합니다. 저는 이미 너무 많은 도움을 받아서 감사하다는 말 밖에 할 수 없어요 ㅠㅠ"</div>
+        <div class="midreview-voice">"더 늘리기도, 줄이기에도 딱 적당한 것 같습니다 교수님 감사합니다!"</div>
+      </div>
+
     </div>
   </section>
 
