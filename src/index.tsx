@@ -630,7 +630,7 @@ app.get('/', (c) => {
     <div class="container">
       <p class="section-label fade-up">수강생 후기</p>
       <h2 class="section-title fade-up">금쪽간호 1기 중간 후기</h2>
-      <p class="section-subtitle fade-up">수강생 4명 전원이 참여한 설문 결과입니다. (무편집 원문)</p>
+
 
       <!-- ── 변화 지표 바 ── -->
       <div class="midreview-stats fade-up">
