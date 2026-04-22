@@ -132,48 +132,48 @@ app.get('/', (c) => {
   <section class="pain" id="pain">
     <div class="container">
       <p class="section-label fade-up">간호대학생의 현실</p>
-      <h2 class="section-title fade-up">실습에서 많이 배웠는데,<br />막상 정리하려면 막막하죠</h2>
+      <h2 class="section-title fade-up">열심히 하는데<br />왜 성적이 안 오를까요?</h2>
       <div class="pain-grid">
         <div class="pain-item fade-up">
-          <span class="pain-emoji">🔍</span>
+          <span class="pain-emoji">📖</span>
           <div class="pain-text">
-            <strong>환자 상태를 어떻게 해석해야 할지 모르겠어요</strong>
-            <span class="pain-sub">어떤 기준으로 해석하고 과제에 써야 하는지 감이 없어요.</span>
+            <strong>이론 시험, 어디서부터 공부해야 할지 모르겠어요</strong>
+            <span class="pain-sub">범위는 넓고 시간은 없는데, 뭘 먼저 잡아야 할지 감이 없어요.</span>
           </div>
         </div>
         <div class="pain-item fade-up" style="transition-delay:0.05s">
-          <span class="pain-emoji">📊</span>
+          <span class="pain-emoji">⏰</span>
           <div class="pain-text">
-            <strong>검사 수치와 모니터링을 어떻게 정리해야 하죠?</strong>
-            <span class="pain-sub">수치는 봤는데, 어떤 기준으로 정리해야 할지 모르겠어요.</span>
+            <strong>실습과 이론 공부를 어떻게 같이 해야 하나요?</strong>
+            <span class="pain-sub">실습 나가면 이론 공부할 시간이 없고, 집에 오면 지쳐서 아무것도 못 해요.</span>
           </div>
         </div>
         <div class="pain-item fade-up" style="transition-delay:0.1s">
-          <span class="pain-emoji">💊</span>
+          <span class="pain-emoji">🗂️</span>
           <div class="pain-text">
-            <strong>약물과 간호중재 연결이 너무 어려워요</strong>
-            <span class="pain-sub">약은 알겠는데, 간호중재로 어떻게 이어야 할지 막막해요.</span>
+            <strong>케이스스터디·간호과정 어떻게 써야 A 받나요?</strong>
+            <span class="pain-sub">시간을 몇 시간씩 써도 교수님이 원하는 방향인지 모르겠어요.</span>
           </div>
         </div>
         <div class="pain-item fade-up" style="transition-delay:0.15s">
           <span class="pain-emoji">📝</span>
           <div class="pain-text">
-            <strong>컨퍼런스·QI 과제 구조를 어떻게 잡아야 하나요?</strong>
-            <span class="pain-sub">어디서 시작해야 하는지, 무엇을 강조해야 하는지 모르겠어요.</span>
+            <strong>공부는 하는데 시험 때 기억이 안 나요</strong>
+            <span class="pain-sub">분명히 봤던 내용인데, 막상 문제로 나오면 헷갈려서 틀려요.</span>
           </div>
         </div>
         <div class="pain-item fade-up" style="transition-delay:0.2s">
-          <span class="pain-emoji">🗂️</span>
+          <span class="pain-emoji">😵</span>
           <div class="pain-text">
-            <strong>케이스 스터디·간호과정으로 연결이 안 돼요</strong>
-            <span class="pain-sub">실습에서 본 것들이 케이스나 간호과정으로 이어지지 않아요.</span>
+            <strong>과목이 너무 많아서 우선순위를 못 잡겠어요</strong>
+            <span class="pain-sub">성인·아동·정신·모성 다 중요하다는데, 어디에 집중해야 하는지 모르겠어요.</span>
           </div>
         </div>
         <div class="pain-item fade-up" style="transition-delay:0.25s">
           <span class="pain-emoji">😮‍💨</span>
           <div class="pain-text">
-            <strong>공부량 문제가 아닌 것 같은데, 뭐가 문제일까요?</strong>
-            <span class="pain-sub">경험을 학습의 언어로 정리하는 게 아직 익숙하지 않은 거예요.</span>
+            <strong>열심히 하는데 왜 나만 제자리인 것 같죠?</strong>
+            <span class="pain-sub">공부량이 문제가 아니라, 방향과 방법이 맞지 않았던 거예요.</span>
           </div>
         </div>
       </div>
