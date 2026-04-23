@@ -29,13 +29,13 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="간호대생 78%가 틀리는 임상 문제, 이유까지 완전 정복 — 금쪽간호. 국시 합격, 임상실습 A+, 판단 로직을 배웁니다." />
+  <meta name="description" content="금쪽간호 — 국시 합격, 임상실습 A+, 판단 로직을 배웁니다." />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph (카카오톡·페이스북·슬랙 공유 미리보기) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="금쪽간호" />
-  <meta property="og:title" content="금쪽간호 | 간호대생 78%가 틀리는 문제, 이유까지 완전 정복" />
+  <meta property="og:title" content="금쪽간호 | 임상 판단 로직을 배웁니다" />
   <meta property="og:description" content="단순 암기 말고 판단 로직을 배우세요. 매주 소크라티브 퀴즈 + 해설 라이브 무료 제공." />
   <meta property="og:image" content="https://mskim.online/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -44,7 +44,7 @@ app.get('/', (c) => {
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="금쪽간호 | 간호대생 78%가 틀리는 문제, 이유까지 완전 정복" />
+  <meta name="twitter:title" content="금쪽간호 | 임상 판단 로직을 배웁니다" />
   <meta name="twitter:description" content="단순 암기 말고 판단 로직을 배우세요. 매주 소크라티브 퀴즈 + 해설 라이브 무료 제공." />
   <meta name="twitter:image" content="https://mskim.online/images/og-image.png" />
 
@@ -52,7 +52,7 @@ app.get('/', (c) => {
   <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
   <link rel="apple-touch-icon" href="/images/logo.png" />
 
-  <title>금쪽간호 | 간호대생 78%가 틀리는 문제, 이유까지 완전 정복</title>
+  <title>금쪽간호 | 임상 판단 로직을 배웁니다</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
@@ -73,9 +73,9 @@ app.get('/', (c) => {
         <a href="#about">강사 소개</a>
         <a href="#curriculum">커리큘럼</a>
         <a href="#reviews">후기</a>
-        <a class="nav-cta" href="https://pf.kakao.com/_mqkuX" target="_blank" rel="noopener">💬 카톡 상담</a>
+        <a class="nav-cta nav-cta-blue" href="https://pf.kakao.com/_mqkuX" target="_blank" rel="noopener">💬 카톡 상담</a>
       </div>
-      <a class="nav-cta" href="https://pf.kakao.com/_mqkuX" target="_blank" rel="noopener" id="mobile-nav-cta" style="display:none;">💬 카톡 상담</a>
+      <a class="nav-cta nav-cta-blue" href="https://pf.kakao.com/_mqkuX" target="_blank" rel="noopener" id="mobile-nav-cta" style="display:none;">💬 카톡 상담</a>
     </div>
   </nav>
 

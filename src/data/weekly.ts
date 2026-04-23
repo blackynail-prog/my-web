@@ -12,7 +12,7 @@ const weeklyData = {
   week: "Week 1",
   subject: "Shock",
   title: "출혈 환자, 이 판단 틀리면 실습 A 없습니다",
-  subtitle: "간호대생 78%가 틀린 문제",
+  subtitle: "이번 주 주간 퀴즈",
   deadline: "이번 주 일요일 자정 마감",
 
   // ── 타이머: ISO 날짜 문자열 (매주 일요일 23:59:59) ─────────

@@ -255,6 +255,11 @@ ul { list-style: none; }
   transition: all 0.15s;
 }
 .nav-cta:hover { background: #333; }
+.nav-cta-blue {
+  background: #1E40AF;
+  color: #fff;
+}
+.nav-cta-blue:hover { background: #1e3a8a; }
 
 /* ===========================
    HERO

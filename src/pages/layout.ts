@@ -10,13 +10,13 @@ export function layout(
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0A0A0A" />
-  <meta name="description" content="간호대생 78%가 틀리는 임상 문제, 이유까지 완전 정복 — 금쪽간호." />
+  <meta name="description" content="금쪽간호 — 임상 판단 로직을 배우세요. 매주 소크라티브 퀴즈 + 해설 라이브 무료 제공." />
 
   <!-- Open Graph (카카오톡·SNS 공유 미리보기) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="금쪽간호" />
   <meta property="og:title" content="${title} | 금쪽간호" />
-  <meta property="og:description" content="간호대생 78%가 틀리는 임상 문제, 이유까지 완전 정복. 매주 소크라티브 퀴즈 + 해설 라이브 무료 제공." />
+  <meta property="og:description" content="임상 판단 로직을 배우세요. 매주 소크라티브 퀴즈 + 해설 라이브 무료 제공." />
   <meta property="og:image" content="https://mskim.online/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
