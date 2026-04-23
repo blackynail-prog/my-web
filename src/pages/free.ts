@@ -124,7 +124,7 @@ export function freePage(): string {
           <span style="font-size:40px;">📲</span>
           <span>QR 이미지를<br />/public/images/qr.png에<br />업로드하세요</span>
         </div>
-        <p class="muted mt12" style="font-size:12px;">소크라티브에서 전체 문제 참여 후<br />해설 라이브에서 완전 정복</p>
+        <p class="muted mt12" style="font-size:12px;">스캔하면 소크라티브 퀴즈에 바로 참여할 수 있어요</p>
       </div>
       <a href="/apply" class="btn btn-danger btn-full mt20 pulse">
         ${w.ctaFree}
