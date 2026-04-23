@@ -256,10 +256,10 @@ ul { list-style: none; }
 }
 .nav-cta:hover { background: #333; }
 .nav-cta-blue {
-  background: #1E40AF;
-  color: #fff;
+  background: #FACC15;
+  color: #1a1a1a;
 }
-.nav-cta-blue:hover { background: #1e3a8a; }
+.nav-cta-blue:hover { background: #eab308; }
 
 /* ===========================
    HERO
