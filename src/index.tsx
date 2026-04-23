@@ -99,9 +99,9 @@ app.get('/', (c) => {
             <span class="hero-btn-badge">이번 주</span>
             🩺 퀴즈 풀러가기 →
           </a>
-          <a href="https://fornurse.online/" target="_blank" rel="noopener"
+          <a href="https://fornurse.online" target="_blank" rel="noopener"
             class="btn btn-outline" style="font-size:14px; padding:13px 24px;">
-            🎓 교육&amp;세미나 보러가기 →
+            🎓 금쪽언니가 추천하는 간호교육&amp;세미나 →
           </a>
           <a href="https://live-nursing.liveklass.com/cu/byPGxrFP" target="_blank" rel="noopener"
             class="btn btn-outline" style="font-size:13px; padding:11px 24px; color:var(--text-muted);">
